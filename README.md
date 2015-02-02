@@ -8,7 +8,7 @@ For Chrome users:
 -----------------
 1. Install TamperMonkey https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
 2. Goto Dasboard -> Utilities tab
-3. Import tamperMonkey.txt provided
+3. Import tmScripts.txt provided
 
 
 For FireFox users:
@@ -29,4 +29,3 @@ displayed results. Copy-paste the contents to Excel.
 Troubleshoot:
 -------------
 If you do not see Export link on the top, make sure the script is configured to run on google scholar pages. 
-
