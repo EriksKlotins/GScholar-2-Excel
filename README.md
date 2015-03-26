@@ -1,8 +1,19 @@
 GScholar-2-Excel
 ================
 
-A piece of JS that exports Google Scholar results to Excel friendly format
+A piece of JS that exports Google Scholar results to Excel friendly format. 
 
+Google Scholar has been used widely used search tool among researchers. While other tools, such as IEEEeXplore, Scopus, EngineeringVillage etc. provide an option to export search results, Google Scholar lack this functionality. This plugin
+adds the functionality to Google Scholar to export search results.
+
+Google Scholar is a recommended tool to perform snowball sampling  - an emerging method to perform systematic literature reviews and maps [1]. Performing forward snowball (discovering papers that cite a particular paper) implies significant effort to move discovered papers from Google Scholar to a spreadsheet for further screening. The plugin is aimed to automate this step. 
+
+
+[1] C. Wohlin, “Guidelines for Snowballing in Systematic Literature Studies and a Replication in Software Engineering,” in Evaluation and Assessment in Software Engineering, 2014.
+
+
+
+# Installation
 
 For Chrome users:
 -----------------
