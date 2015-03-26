@@ -3,7 +3,8 @@
 // @namespace  http://eriksklotins.lv/
 // @version    0.2
 // @description  enter something useful
-// @match      *://scholar.google.*/*
+// @match      *://scholar.google.com/*
+// @match      *://scholar.google.se/*
 // @grant       none
 // @copyright  2014+, E.Klotins
 // @require http://code.jquery.com/jquery-latest.js
