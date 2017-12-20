@@ -23,7 +23,7 @@ For now, the plugin is a simple JavaScript file and requires another plugin to r
 1. Install TamperMonkey https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
 2. Download the export plugin (https://github.com/EriksKlotins/GScholar-2-Excel/archive/master.zip)
 3. Goto TamperMonkey -> Dasboard -> Utilities tab
-4. Import tmScripts.txt provided
+4. Import excel-export.js file 
 
 
 ## For FireFox users:
@@ -37,7 +37,7 @@ For now, the plugin is a simple JavaScript file and requires another plugin to r
 
 ## Troubleshoot:
 -------------
-If you do not see Export link on the top, make sure the script is configured to run on google scholar pages. 
+If you do not see Export link on the top, make sure the script is configured to run on google scholar pages. Click on TamperMonkey icon to see what scripts are actually running.
 
 
 # How to use:
