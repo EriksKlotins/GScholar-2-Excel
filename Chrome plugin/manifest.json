@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "GScholar-2-Excel",
+  "description": "This extension allows to dump google scholar search results to a spreadsheet",
+  "version": "1.0",
+
+
+
+
+
+    "background": {
+        "persistent": false,
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [{
+        "matches": ["*://scholar.google.com/*"],
+        "js":      ["jquery-2.1.3.min.js", "script.js"]
+    }],
+    "browser_action": {
+        "default_title": "Test Extension"
+    },
+
+    "permissions": ["activeTab"]
+
+}

@@ -1,24 +1,24 @@
 // ==UserScript==
 // @name       Google Scholar Excel export
 // @namespace  http://eriksklotins.lv/
-// @version    0.2
+// @version    0.3
 // @description  enter something useful
 // @match      *://scholar.google.com/*
 // @match      *://scholar.google.se/*
 // @grant       none
 // @copyright  2014+, E.Klotins
-// @require http://code.jquery.com/jquery-latest.js
+// @require https://code.jquery.com/jquery-3.2.1.min.js
 // ==/UserScript==
 
 ;(function($, window)
 {
-  var results = [];
+
   var installButton = function(title, action)
   {
-     var node = $('<a href="#">'+title+'</a>'); 
+     var node = $('<a href="#" class="gs_btnPRO gs_in_ib gs_nph gs_nta"><span class="gs_lbl">'+title+'</span></a>');
      return $(node)
       .on('click', action)
-      .appendTo('#gs_gb_lt');
+      .appendTo('#gs_ab_btns');
   };
     
   var getQueryInfo = function()
@@ -40,12 +40,13 @@
     //  console.log('parseResult',i, item);
     var offset =  getQueryInfo().offset;
     var index = offset+ i + 1; 
-    var title = $('.gs_rt',item).text().replace(/(\r\n|\n|\r)/gm,"");
+    var title = $('.gs_rt',item).text().replace(/(\r\n|\n|\r|\t)/gm,"");
     var link  = $('.gs_rt a',item).attr('href');
-    var meta = $('.gs_a', item).text().replace(/(\r\n|\n|\r)/gm,"");
-    var abstract = $('.gs_rs', item).text().replace(/(\r\n|\n|\r)/gm,"");
-    results.push({ index:index,title: title,link:link, meta: meta, abstract:abstract});
-     //console.log([title,authors,abstract]);
+    var clickableLink = ['=HYPERLINK','("',link,'")'].join('');
+    var meta = $('.gs_a', item).text().replace(/(\r\n|\n|\r|\t)/gm,"");
+    var abstract = $('.gs_rs', item).text().replace(/(\r\n|\n|\r|\t)/gm,"");
+    results.push({ index:index,title: title,link:link, clickableLink:clickableLink,  meta: meta, abstract:abstract});
+    //console.log({ index:index,title: title,link:link, meta: meta, abstract:abstract});
   };
     
     var encodeCSV = function (results)
@@ -54,9 +55,11 @@
       for(var i=0;i<results.length;i++)
       {
         var row = [];
-        for(var col in results[i])
+      for(var col in results[i])
         {
-            row.push(results[i][col]);
+           
+           row.push(results[i][col]);
+            
         }
         result += row.join("\t")+"\n";
       }
@@ -67,7 +70,7 @@
     {
        results = [];
        $('.gs_r').each(parseResult);
-       // console.log(results);
+        console.log(results);
        var str = encodeCSV(results);
        displayResults(str);
         // console.log(results.length, results);
@@ -89,6 +92,7 @@
           }
           else
           {
+            window.localStorage.setItem("g2e-export-continue", true);
             document.location = url;
           }
             //console.log(url);
@@ -104,5 +108,10 @@
   
     
     var button1 = installButton('Export', parsePage);
+    if (  window.localStorage.getItem("g2e-export-continue"))
+    {
+        window.localStorage.removeItem("g2e-export-continue");
+        parsePage();
+    }    
 
 })($, window);
